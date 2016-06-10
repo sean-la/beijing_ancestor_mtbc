@@ -1,17 +1,16 @@
-import nexus_sequences
+import snp_sequences
 
-genomeSize = 10
 numSamples = 9
 
-sequences = nexus_sequences.NexusSequences(genomeSize, numSamples)
+sequences = snp_sequences.SnpSequences()
 
 for index in range(numSamples+1):
-	if index % 2 == 0:
-		sequences.addSnp(index, index, "A", "G")
+	sequences.addSnp(index, index, "A", "G")
 
 sequences.addSnp(3, 8, "A", "C") 
-
-sequences.printSparseMatrix()
+sequences.addSnp(4, 8, "A", "G")
 
 for index in range(numSamples+1):
-	print sequences.getSequence(index)
+	print sequences.getSampleSeq(index)
+
+print sequences.getRefSeq()
