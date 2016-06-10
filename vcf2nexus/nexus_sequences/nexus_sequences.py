@@ -8,7 +8,7 @@ class NexusSequences(object):
 
 		numSamples - The number of sample genomes i.e. from the Beijing lineage, excluding the reference genome.
 
-	Methods:
+	Public Methods:
 		addSnp(strainNumber, snpPosition, refBase, sampleBase)
 			Adds SNP
 
