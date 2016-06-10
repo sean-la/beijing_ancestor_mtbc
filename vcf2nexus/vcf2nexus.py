@@ -71,7 +71,7 @@ if __name__ == "__main__":
 		sys.exit(2)
 
 	inputDir = ''
-	nexusPath = 'vcf2nexus.out'
+	nexusPath = 'vcf2nexus.nex'
 	regex = ''
 
 	for opt, arg in opts:
