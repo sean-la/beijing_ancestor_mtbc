@@ -1,7 +1,7 @@
-import os, re
+import os, re, getopt, sys
 import snp_sequences
 
-def getVcfPaths(vcfPath, rePattern):
+def getVcfPaths(inputDir, rePattern):
 	'''
 	Find all names of files in vcfPath that match regex pattern (rePattern)
 	'''
@@ -9,7 +9,7 @@ def getVcfPaths(vcfPath, rePattern):
 
 	vcfFilePathList = []
 	
-	for dirName, subdirList, fileList in os.walk(vcfPath):
+	for dirName, subdirList, fileList in os.walk(inputDir):
 		for filename in fileList:
 			if regex.match(filename):
 				vcfFilePath = "%s/%s" % ( str(dirName), str(filename) )
@@ -60,4 +60,38 @@ def writeNexus(nexusPath, sampleNames, snpSequences):
 
 	file.write(";\n")
 	file.write("End;\n")	
+	file.close()
 
+if __name__ == "__main__":
+	options = "hi:o:r:"
+
+	try:
+		opts, args = getopt.getopt(argv, options)
+	except getopt.GetoptError:
+		sys.exit(2)
+
+	inputDir = ''
+	nexusPath = 'vcf2nexus.out'
+	regex = ''
+
+	for opt, arg in opts:
+		if opt == '-h':
+			print "Usage"
+		elif opt == '-i':
+			inputDir = arg
+		elif opt == '-o':
+			nexusPath = arg
+		elif opt == '-r':
+			regex = arg
+
+	snpSequences = snp_sequences.SnpSequences()
+	sampleNames = getSampleNames(inputDir)
+	
+	for sampleName in sampleNames:
+		vcfDir = "%s/%s" % (inputDir, sampleName)
+		vcfPaths = getVcfPaths(vcfDir, regex)
+
+		for vcfPath in vcfPaths:
+			readVcf(vcfPath, sampleName, snpSequences) 
+
+	writeNexus(nexusPath, sampleNames, snpSequences)
