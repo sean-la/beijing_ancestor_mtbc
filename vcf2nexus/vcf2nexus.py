@@ -1,4 +1,5 @@
-import os, re, getopt, sys
+import os, re, getopt
+import sys
 import snp_sequences
 
 def getVcfPaths(inputDir, rePattern):
@@ -17,9 +18,16 @@ def getVcfPaths(inputDir, rePattern):
 	return vcfFilePathList
 
 def getSampleNames(dirName):
+	'''
+	Get the sample names. We assume the sample names are the names of the directories that
+	contain the vcf files.
+	'''
 	return [x[1] for x in os.walk(dirName)][0]
 
 def readVcf(vcfFilePath, sampleName, snpSequences):
+	'''
+	Read and store the SNPs from the vcf files to the SNP BST.
+	'''
 	file = open(vcfFilePath, 'r')
 
 	for line in file:
@@ -33,6 +41,9 @@ def readVcf(vcfFilePath, sampleName, snpSequences):
 	file.close()
 
 def writeNexus(nexusPath, sampleNames, snpSequences):
+	'''
+	Write the sequences into the nexus file.
+	'''
 	ntax = len(sampleNames) + 1
 	nchar = len(snpSequences.getRefSeq())
 
@@ -63,20 +74,32 @@ def writeNexus(nexusPath, sampleNames, snpSequences):
 	file.close()
 
 if __name__ == "__main__":
+	# The recursion limit needs to be set higher so that the BST recursive algorithms can work.
+	# Python only allows a maximum recursive depth of 1000, while the samples we are working with
+	# have around 1200 SNPs. Once the binary search tree implementation is changed from a recursive 
+	# to an iterative method, this won't be necessary.
+	sys.setrecursionlimit(2000)
+
 	options = "hi:o:r:"
 
 	try:
-		opts, args = getopt.getopt(argv, options)
+		opts, args = getopt.getopt(sys.argv[1:], options)
 	except getopt.GetoptError:
 		sys.exit(2)
 
+	if (len(sys.argv) == 1):
+		print "Usage: %s [-i input directory] [-o output path] [-r VCF files regular expression]" % (sys.argv[0])
+		sys.exit()
+
 	inputDir = ''
 	nexusPath = 'vcf2nexus.nex'
-	regex = ''
+	regex = '(\d|\D)*.vcf$'
 
 	for opt, arg in opts:
 		if opt == '-h':
-			print "Usage"
+			print "Usage: %s [-i input directory] [-o output path] [-r VCF files regular expression]" % (sys.argv[0])
+			print "Default: -o vcf2nexus.nex -r (\d|\D)*.vcf$"
+			sys.exit()
 		elif opt == '-i':
 			inputDir = arg
 		elif opt == '-o':
@@ -84,14 +107,28 @@ if __name__ == "__main__":
 		elif opt == '-r':
 			regex = arg
 
+	if inputDir == '':
+		print "Please provide an input directory."
+		print "Usage: %s [-i input directory] [-o output path] [-r VCF files regular expression]" % (sys.argv[0])
+		sys.exit()
+
 	snpSequences = snp_sequences.SnpSequences()
+	# First, find the sample names. We assume the sample names are the same as the names of the
+	# directories.
 	sampleNames = getSampleNames(inputDir)
-	
+
 	for sampleName in sampleNames:
-		vcfDir = "%s/%s" % (inputDir, sampleName)
+		if inputDir[-1] == "/":
+			vcfDir = "%s%s" % (inputDir, sampleName)
+		else:
+			vcfDir = "%s/%s" % (inputDir, sampleName)
+
+		# Find all the VCF file paths in the directories that match the regex.
 		vcfPaths = getVcfPaths(vcfDir, regex)
 
 		for vcfPath in vcfPaths:
+			# Read and store the SNPs in the snp BST
 			readVcf(vcfPath, sampleName, snpSequences) 
 
+	# Finally, write the SNPs into the nexus file
 	writeNexus(nexusPath, sampleNames, snpSequences)
