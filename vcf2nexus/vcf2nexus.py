@@ -44,33 +44,34 @@ def writeNexus(nexusPath, sampleNames, snpSequences):
 	'''
 	Write the sequences into the nexus file.
 	'''
-	ntax = len(sampleNames) + 1
+	ntax = len(sampleNames)
 	nchar = len(snpSequences.getRefSeq())
 
 	file = open(nexusPath, 'w')
 
-	file.write("#NEXUS\n")
-	file.write("Begin data;\n")
+	file.write("#NEXUS\n\n")
+	file.write("BEGIN DATA;\n")
 
-	dimensions = "Dimensions ntax=%d nchar=%d;\n" % (ntax, nchar)
+	dimensions = "DIMENSIONS NTAX=%d NCHAR=%d;\n" % (ntax, nchar)
 	file.write(dimensions)
 
-	format = "Format datatype=dna missing=? gap=-;\n"
+	format = "FORMAT DATATYPE=DNA MISSING=? GAP=-;\n"
 	file.write(format)
 
-	file.write("Matrix\n")
-	
-	refSeq = snpSequences.getRefSeq()
-	referenceLine = "Reference   %s\n" % (refSeq)
-	file.write(referenceLine)
+	# This allows MEGA to convert NEXUS to MEG
+	for sampleName in sampleNames:
+		nameLine = "[Name: %s Len: %d Check: 0]\n" % (sampleName, nchar)
+		file.write(nameLine)
 
+	file.write("MATRIX\n")
+	
 	for sampleName in sampleNames:
 		sampleSeq = snpSequences.getSampleSeq(sampleName)
-		sampleLine = "%s   %s\n" % (sampleName, sampleSeq)
+		sampleLine = "%s %s\n" % (sampleName, sampleSeq)
 		file.write(sampleLine)
 
 	file.write(";\n")
-	file.write("End;\n")	
+	file.write("END;\n")	
 	file.close()
 
 if __name__ == "__main__":
@@ -115,6 +116,9 @@ if __name__ == "__main__":
 	snpSequences = snp_sequences.SnpSequences()
 	# First, find the sample names. We assume the sample names are the same as the names of the
 	# directories.
+	
+	print "Input directory: %s" % (inputDir)
+
 	sampleNames = getSampleNames(inputDir)
 
 	for sampleName in sampleNames:
@@ -123,10 +127,13 @@ if __name__ == "__main__":
 		else:
 			vcfDir = "%s/%s" % (inputDir, sampleName)
 
+		print "Found sample %s" % (sampleName)
+
 		# Find all the VCF file paths in the directories that match the regex.
 		vcfPaths = getVcfPaths(vcfDir, regex)
 
 		for vcfPath in vcfPaths:
+			print "Reading file: %s" %(vcfPath)
 			# Read and store the SNPs in the snp BST
 			readVcf(vcfPath, sampleName, snpSequences) 
 
