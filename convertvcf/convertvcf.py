@@ -17,12 +17,15 @@ def getVcfPaths(inputDir, rePattern):
 				vcfFilePathList.append(vcfFilePath)
 	return vcfFilePathList
 
-def getSampleNames(dirName):
+def getSampleNames(sampleListPath):
 	'''
 	Get the sample names. We assume the sample names are the names of the directories that
 	contain the vcf files.
 	'''
-	sampleNames = [x[1] for x in os.walk(dirName)][0]
+	sampleNames = []
+	with open(sampleListPath, 'r') as file:
+		for line in file:
+			sampleNames.append( line.rstrip() )	
 	return sampleNames
 
 def readVcf(vcfFilePath, sampleName, snpSequences):
@@ -102,10 +105,10 @@ if __name__ == "__main__":
 	# to an iterative method, this won't be necessary.
 	sys.setrecursionlimit(2000)
 
-	options = "hi:o:r:fnp"
+	options = "hi:o:s:r:fnp"
 
 	help = "Convert VCF files to NEXUS, FASTA or PHYLIP format."
-	usage = "Usage: %s [-i input directory] [-o output prefix] [-r VCF files regular expression] [-f fasta] [-n nexus] [-p phylip]" % (sys.argv[0])
+	usage = "Usage: %s [-i input directory] [-o output prefix] [-s path to text file with list of strains] [-r VCF files regular expression] [-f fasta] [-n nexus] [-p phylip]" % (sys.argv[0])
 
 	try:
 		opts, args = getopt.getopt(sys.argv[1:], options)
@@ -122,6 +125,7 @@ if __name__ == "__main__":
 	fasta = False
 	nexus = False
 	phylip = False
+	sampleListPath = None
 
 	for opt, arg in opts:
 		if opt == '-h':
@@ -141,6 +145,8 @@ if __name__ == "__main__":
 			nexus = True
 		elif opt == '-p':
 			phylip = True
+		elif opt == '-s':
+			sampleListPath = arg
 
 	optsIncomplete = False
 
@@ -149,6 +155,9 @@ if __name__ == "__main__":
 		optsIncomplete = True
 	if not fasta and not nexus and not phylip:
 		print "Please indicate the output file format: nexus, fasta, or phylip"
+		optsIncomplete = True
+	if sampleListPath is None:
+		print "Please provide the path to the text file with the list of strains."
 		optsIncomplete = True
 	if optsIncomplete:
 		print usage
@@ -160,7 +169,9 @@ if __name__ == "__main__":
 	
 	print "Input directory: %s" % (inputDir)
 
-	sampleNames = getSampleNames(inputDir)
+	sampleNames = getSampleNames(sampleListPath)
+
+	print "Found %d samples." % ( len(sampleNames) )
 
 	for sampleName in sampleNames:
 		if inputDir[-1] == "/":
