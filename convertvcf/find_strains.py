@@ -1,6 +1,6 @@
 sampleFilename = "sample_list.txt"
 redundantFileName = "redundant_samples.txt"
-strainFilename = "strain_list.txt"
+strainFilename = "unique_strains.txt"
 samples = 0
 strains = 0
 
