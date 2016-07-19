@@ -35,6 +35,7 @@ class Node(object):
 		'''
 		Find the SNP sequence of the given sample. If the sample has no SNP in the given
 		position, then it is assumed that sample base is the same as the ref base.
+		The sequence is found using an in-order traversal of the tree using recursion.
 		'''
 		if self.left is not None:
 			self.left.getSampleSeq(sequence, sampleName)
@@ -92,10 +93,12 @@ class SnpSequences(object):
 		# Initialize data in form of dictionary
 		data = {}
 		data[self.positionKey] = snpPosition
+		# We store both the reference base and the sample base
+		# in the dictionary
 		data[self.refBaseKey] = refBase
 		data[sampleName] = sampleBase
-		# Put data into node
 
+		# Put data into node
 		if self.root is None:
 			# If the root is empty, init the root
 			node = Node(data)
