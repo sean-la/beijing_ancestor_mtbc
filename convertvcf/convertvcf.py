@@ -107,7 +107,7 @@ if __name__ == "__main__":
 
 	options = "hi:o:s:r:fnp"
 
-	help = "Convert VCF files to NEXUS, FASTA or PHYLIP format."
+	help = "Convert VCF files to NEXUS, FASTA or PHYLIP format.\n You add more than one '-i' arguments at a time to specify multiple input directories."
 	usage = "Usage: %s [-i input directory] [-o output prefix] [-s path to text file with list of strains] [-r VCF files regular expression] [-f fasta] [-n nexus] [-p phylip]" % (sys.argv[0])
 
 	try:
@@ -119,7 +119,7 @@ if __name__ == "__main__":
 		print usage	
 		sys.exit()
 
-	inputDir = None
+	inputDirs = []
 	output = 'vcf2nexus'
 	regex = '(\d|\D)*.vcf$'
 	fasta = False
@@ -134,7 +134,7 @@ if __name__ == "__main__":
 			print "Default: -o vcf2nexus -r (\d|\D)*.vcf$"
 			sys.exit()
 		elif opt == '-i':
-			inputDir = arg
+			inputDirs.append(arg)
 		elif opt == '-o':
 			output = arg
 		elif opt == '-r':
@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
 	optsIncomplete = False
 
-	if inputDir == '':
+	if inputDirs == []:
 		print "Please provide an input directory."
 		optsIncomplete = True
 	if not fasta and not nexus and not phylip:
@@ -166,28 +166,32 @@ if __name__ == "__main__":
 	snpSequences = snp_sequences.SnpSequences()
 	# First, find the sample names. We assume the sample names are the same as the names of the
 	# directories.
-	
-	print "Input directory: %s" % (inputDir)
 
+	print "User inputted %d directories" % ( len(inputDirs) )
+	
 	sampleNames = getSampleNames(sampleListPath)
 
-	print "Found %d samples." % ( len(sampleNames) )
+	print "Found %d sample names" % ( len(sampleNames) )
+	print
 
-	for sampleName in sampleNames:
-		if inputDir[-1] == "/":
-			vcfDir = "%s%s" % (inputDir, sampleName)
-		else:
-			vcfDir = "%s/%s" % (inputDir, sampleName)
+	for inputDir in inputDirs:
+		print "Input directory: %s" % (inputDir)
 
-		print "Found sample %s" % (sampleName)
+		for sampleName in sampleNames:
+			if inputDir[-1] == "/":
+				vcfDir = "%s%s" % (inputDir, sampleName)
+			else:
+				vcfDir = "%s/%s" % (inputDir, sampleName)
 
-		# Find all the VCF file paths in the directories that match the regex.
-		vcfPaths = getVcfPaths(vcfDir, regex)
+			# Find all the VCF file paths in the directories that match the regex.
+			vcfPaths = getVcfPaths(vcfDir, regex)
 
-		for vcfPath in vcfPaths:
-			print "Reading file: %s" %(vcfPath)
-			# Read and store the SNPs in the snp BST
-			readVcf(vcfPath, sampleName, snpSequences) 
+			for vcfPath in vcfPaths:
+				print "Reading file: %s" %(vcfPath)
+		print
+	'''
+				# Read and store the SNPs in the snp BST
+				readVcf(vcfPath, sampleName, snpSequences) 
 
 	# Finally, write the SNPs into the nexus file
 	if nexus:
@@ -202,3 +206,4 @@ if __name__ == "__main__":
 		print "Converting to PHYLIP format."
 		output = "%s.phy" %(output)
 		writePhylip(output, sampleNames, snpSequences)
+	'''
