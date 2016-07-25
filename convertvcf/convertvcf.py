@@ -174,6 +174,11 @@ if __name__ == "__main__":
 	print "Found %d sample names" % ( len(sampleNames) )
 	print
 
+	# Keep track of repeated samples in the directories.
+	alreadyReadSamples = []
+	repeatedSampleExists = False
+	repeatedSamples = []
+
 	for inputDir in inputDirs:
 		print "Input directory: %s" % (inputDir)
 
@@ -186,13 +191,27 @@ if __name__ == "__main__":
 			# Find all the VCF file paths in the directories that match the regex.
 			vcfPaths = getVcfPaths(vcfDir, regex)
 
-			for vcfPath in vcfPaths:
-				print "Reading file: %s" %(vcfPath)
+			if len( vcfPaths ) > 0:
+				if sampleName in alreadyReadSamples:
+					print "Error: Sample %s has already been read!" % (sampleName)
+					repeatedSampleExists = True
+				else:
+					alreadyReadSamples.append( sampleName )
+					for vcfPath in vcfPaths:
+						print "Reading file: %s" %(vcfPath)
+						# Read and store the SNPs in the snp BST
+						if not repeatedSamplesExist:
+							readVcf(vcfPath, sampleName, snpSequences) 
+			else:
+				print "Error: Sample %s not found in input directory." % (sampleName)
 		print
-	'''
-				# Read and store the SNPs in the snp BST
-				readVcf(vcfPath, sampleName, snpSequences) 
 
+	if repeatedSampleExists:
+		print "Please ensure that all samples appear only once over all inputted directories."
+		print "Exiting program..."
+		sys.exit(2)
+
+	'''
 	# Finally, write the SNPs into the nexus file
 	if nexus:
 		print "Converting to NEXUS format."
