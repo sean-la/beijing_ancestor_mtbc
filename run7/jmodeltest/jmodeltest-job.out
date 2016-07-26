@@ -1,0 +1,7 @@
+[MPI] Testing MPI environment... (b13)
+[MPI] Proceed without MPI
+
+WARNING: Information Criterion for hierarchical clustering has been specified, but hierarchical clustering applies only for 203 substitution schemes
+         Thus, this option has no effect
+
+PhyML binary: /home/seanla/Software/jmodeltest-2.1.10/exe/phyml/PhyML_3.0_linux64 v20130103

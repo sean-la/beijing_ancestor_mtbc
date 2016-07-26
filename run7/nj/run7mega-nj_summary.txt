@@ -1,0 +1,47 @@
+;   MEGA-CC (Molecular Evolutionary Genetics Analysis Compute Core)
+;
+;   Suggested Citation for MEGA-CC:
+;   MEGA-CC: Computing Core of Molecular Evolutionary Genetics
+;   Analysis Program for Automated and Iterative Data Analysis.
+;   Bioinformatics (2012) 28:2685-2686 (Epub 2012 Aug 24)
+
+[General Info]
+
+	Data Type                               = nucleotide (non-coding)
+	No. of Taxa                             =       90
+	No. of Sites                            =     6403
+	Data File                               = '/home/seanla/Projects/beijing_ancestor_mtbc/run7/snps/run7.fasta'
+	Settings File                           = '/home/seanla/Projects/beijing_ancestor_mtbc/run7/nj/infer_NJ_nucleotide.mao'
+	Command Line                            = /home/seanla/Software/mega/megacc -a /home/seanla/Projects/beijing_ancestor_mtbc/run7/nj/infer_NJ_nucleotide.mao -d /home/seanla/Projects/beijing_ancestor_mtbc/run7/snps/run7.fasta -o /home/seanla/Projects/beijing_ancestor_mtbc/run7/nj/run7mega-nj
+
+[Analysis Settings]
+
+	Analysis                                = Phylogeny Reconstruction
+	Scope                                   = All Selected Taxa
+	Statistical Method                      = Neighbor-joining
+	Phylogeny Test                          = Not Applicable
+	Test of Phylogeny                       = Bootstrap method
+	No. of Bootstrap Replications           = 1000
+	Substitutions Type                      = Nucleotide
+	Model/Method                            = No. of differences
+	Substitutions to Include                = d: Transitions + Transversions
+	Rates among Sites                       = Gamma Distributed With Invariant Sites (G+I)
+	Gamma Parameter                         = 4.00
+	Pattern among Lineages                  = Same (Homogeneous)
+	Gaps/Missing Data Treatment             = Complete deletion
+	Site Coverage Cutoff (%)                = Not Applicable
+	Has Time Limit                          = False
+	Maximum Execution Time                  = -1
+	datatype                                = snNucleotide
+	containsCodingNuc                       = False
+	MissingBaseSymbol                       = ?
+	IdenticalBaseSymbol                     = .
+	GapSymbol                               = -
+
+[Analysis Statistics]
+
+	Start Time                              = 26-7-16 10:09:49
+	End Time                                = 26-7-16 10:31:01
+	Execution Time                          = 1272.077 (seconds)
+	Peak Memory Used(Working Set)           = Not available
+	Sum of branch lengths                   = 8111.848
