@@ -18,7 +18,7 @@ def writeModelTest():
 		outputOnly = "#PBS -j oe\n"
 		file.write(outputOnly)
 
-		jobOutput = "#PBS -o %s/jmodeltest/jmodeltest-job.out\n"
+		jobOutput = "#PBS -o jmodeltest-job.out\n"
 		file.write(jobOutput)
 
 		resources = ['walltime=1:00:00:00', 'mem=32gb', 'nodes=1:ppn=8']
@@ -70,7 +70,7 @@ def writeMega():
 		outputOnly = "#PBS -j oe\n"
 		file.write(outputOnly)
 
-		jobOutput = "#PBS -o %s/nj/mega-nj.out\n"
+		jobOutput = "#PBS -o mega-nj.out\n"
 		file.write(jobOutput)
 
 		resources = ['walltime=1:00:00:00', 'mem=64gb', 'nodes=1:ppn=8']
@@ -125,7 +125,7 @@ def writeBeast():
 		outputOnly = "#PBS -j oe\n"
 		file.write(outputOnly)
 
-		jobOutput = "#PBS -o %s/bayes/beast.out\n"
+		jobOutput = "#PBS -o beast.out\n" 
 		file.write(jobOutput)
 
 		resources = ['walltime=1:00:00:00', 'mem=64gb', 'nodes=1:ppn=8']
@@ -157,7 +157,54 @@ def writeBeast():
 		file.write(command)	
 
 def writeRaxml():
-	
+	jobPath = "%s/raxml.pbs" % (jobsPath)
+	with open(jobPath, 'w') as file:
+		file.write("#!/bin/bash\n")
+
+		jobName = "#PBS -N raxml\n"
+		file.write(jobName)
+		
+		email = "#PBS -M laseanl@sfu.ca\n"
+		file.write(email)
+		file.write("#PBS -m ea\n")
+
+		epiloguePath = "#PBS -l epilogue=/home/seanla/Jobs/epilogue.script\n"
+		file.write(epiloguePath)
+		
+		outputOnly = "#PBS -j oe\n"
+		file.write(outputOnly)
+
+		jobOutput = "#PBS -o raxml.out\n"
+		file.write(jobOutput)
+
+		resources = ['walltime=1:00:00:00', 'mem=64gb', 'nodes=1:ppn=8']
+		for resource in resources:
+			line = "#PBS -l %s\n" % (resource)
+			file.write(line)
+
+		file.write('\n')
+
+		runLine = "run=run%d\n" % (runNumber)
+		file.write(runLine)
+
+		prefixLine = "prefix=%s\n" % (outputPath)
+		file.write(prefixLine)
+
+		input = "input=$prefix/${run}.phy\n"
+		file.write(input)	
+
+		outputdir = "outputdir=$prefix/raxml\n"
+		file.write(outputdir)
+
+		output = "output=${run}raxml\n"
+		file.write(output)
+
+		mkdir = "mkdir -p $outputdir\n"
+		file.write(mkdir)
+
+		command = "raxml -T ${PBS_NUM_PPN} -f a -x 61938 -p 889579 -# 1000 -k -m GTRGAMMA -s $input -w $outputdir -n $output\n"
+		file.write(command)	
+		
 
 helpMessage = "Generate PBS scripts for phylogenetic analysis."
 usageMessage = "[-h help and usage] [-r run number]"
@@ -180,6 +227,7 @@ for opt, arg in opts:
         if opt == '-h':
 		print helpMessage
 		print usageMessage
+		sys.exit()
 	if opt == '-r':
 		runNumber = int(arg)
 
@@ -189,7 +237,7 @@ if runNumber is None:
 	sys.exit(2)
 
 # Global - paths to scripts
-jobsPath = "/home/seanla/Jobs/phylo/run%d" % (runNumber)
+jobsPath = "/home/seanla/Jobs/phylo" 
 outputPath = "/home/seanla/Projects/beijing_ancestor_mtbc/run%d" % (runNumber)
 
 #writeConvertVcf()
