@@ -190,7 +190,7 @@ def writeRaxml():
 		prefixLine = "prefix=%s\n" % (outputPath)
 		file.write(prefixLine)
 
-		input = "input=$prefix/${run}.phy\n"
+		input = "input=$prefix/snps/${run}.phy\n"
 		file.write(input)	
 
 		outputdir = "outputdir=$prefix/raxml\n"
