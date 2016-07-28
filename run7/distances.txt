@@ -1,0 +1,3 @@
+Distance between ML and NJ is 46, normalized distance is 0.264368
+Distance between ML and Bayes is 42, normalized distance is 0.241379
+Distance between NJ and Bayes is 34, normalized distance is 0.195402
