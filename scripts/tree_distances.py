@@ -1,3 +1,4 @@
+from __future__ import division
 import sys
 import getopt
 import dendropy
@@ -71,47 +72,58 @@ if optsIncomplete:
 	sys.exit(2)
 
 # Get the trees from the input files
-mlTree = readNewick(raxmlPath)
-njTree = readNewick(megaPath)
-bayesTree = readNewick(beastPath)
+mlRawTree = readNewick(raxmlPath)
+njRawTree = readNewick(megaPath)
+bayesRawTree = readNewick(beastPath)
 
 # Make the the taxon namespace is established
 tns = dendropy.TaxonNamespace()
 
 # Each tree should have the same taxon namespace
 mlTree = dendropy.Tree.get(
-		data=mlTree,
+		data=mlRawTree,
 		schema='newick',
 		taxon_namespace=tns)
 
 njTree = dendropy.Tree.get(
-		data=njTree,
+		data=njRawTree,
 		schema='newick',
 		taxon_namespace=tns)
 
 bayesTree = dendropy.Tree.get(
-		data=bayesTree,
+		data=bayesRawTree,
 		schema='newick',
 		taxon_namespace=tns)
+
+treeList = dendropy.TreeList()
+treeList.read(data=mlRawTree, schema="newick")
+numTaxa = len( treeList.taxon_namespace )
+maxDistance = (2*numTaxa)-6
 
 with open(outputPath, 'w') as file:
 	# Distance between ML and NJ
 	distance = treecompare.symmetric_difference(mlTree, njTree)
-	result = "Distance between ML and NJ is %d" % (distance)
+	normalizedDistance = distance / maxDistance 
+
+	result = "Distance between ML and NJ is %d, normalized distance is %f" % (distance, normalizedDistance)
 	print result
 	file.write(result)
 	file.write('\n')
 
 	# Distance between ML and Bayes
 	distance = treecompare.symmetric_difference(mlTree, bayesTree)
-	result = "Distance between ML and Bayes is %d" % (distance)
+	normalizedDistance = distance / maxDistance 
+
+	result = "Distance between ML and Bayes is %d, normalized distance is %f" % (distance, normalizedDistance)
 	print result
 	file.write(result)
 	file.write('\n')
 
 	# Distance between NJ and Bayes
 	distance = treecompare.symmetric_difference(njTree, bayesTree)
-	result = "Distance between NJ and Bayes is %d" % (distance)
+	normalizedDistance = distance / maxDistance 
+
+	result = "Distance between NJ and Bayes is %d, normalized distance is %f" % (distance, normalizedDistance)
 	print result
 	file.write(result)
 	file.write('\n')
