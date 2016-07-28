@@ -167,7 +167,10 @@ if __name__ == "__main__":
 	# First, find the sample names. We assume the sample names are the same as the names of the
 	# directories.
 
-	print "User inputted %d directories" % ( len(inputDirs) )
+	if len(inputDirs) == 1:
+		print "User inputted %d directory" % ( len(inputDirs) )
+	else:
+		print "User inputted %d directories" % ( len(inputDirs) )
 	
 	sampleNames = getSampleNames(sampleListPath)
 
@@ -176,7 +179,7 @@ if __name__ == "__main__":
 
 	# Keep track of repeated samples in the directories.
 	alreadyReadSamples = []
-	repeatedSampleExists = False
+	repeatedSamplesExist = False
 	repeatedSamples = []
 
 	for inputDir in inputDirs:
@@ -206,12 +209,11 @@ if __name__ == "__main__":
 				print "Error: Sample %s not found in input directory." % (sampleName)
 		print
 
-	if repeatedSampleExists:
+	if repeatedSamplesExist:
 		print "Please ensure that all samples appear only once over all inputted directories."
 		print "Exiting program..."
 		sys.exit(2)
 
-	'''
 	# Finally, write the SNPs into the nexus file
 	if nexus:
 		print "Converting to NEXUS format."
@@ -225,4 +227,3 @@ if __name__ == "__main__":
 		print "Converting to PHYLIP format."
 		output = "%s.phy" %(output)
 		writePhylip(output, sampleNames, snpSequences)
-	'''
