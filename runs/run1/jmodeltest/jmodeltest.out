@@ -1,0 +1,18 @@
+[MPI] Testing MPI environment... (b07)
+[MPI] Proceed without MPI
+
+WARNING: Information Criterion for hierarchical clustering has been specified, but hierarchical clustering applies only for 203 substitution schemes
+         Thus, this option has no effect
+
+PhyML binary: /home/seanla/Software/jmodeltest-2.1.10/exe/phyml/PhyML_3.0_linux64 v20130103
+Epilogue Args:
+Job ID: 326146.breezy-admin
+User ID: seanla
+Group ID: seanla
+Job Name: jmodeltest
+Session ID: 21614
+Resource List: epilogue=/home/seanla/Jobs/epilogue.script,mem=16gb,neednodes=1:ppn=4,nodes=1:ppn=4,walltime=05:00:00
+Resources Used: cput=30:04:16,mem=7155352kb,vmem=47932660kb,walltime=03:31:45
+Queue Name: mainq
+Account String: 
+

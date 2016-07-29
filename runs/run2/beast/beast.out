@@ -1,0 +1,187 @@
+Checking out /home/seanla/.beast/2.4/BEAST/lib
+Loaded URL file:/home/seanla/.beast/2.4/BEAST/lib/beast.jar
+jardir = /global/software/beast/beast241/lib/launcher.jar
+Loading package BEAST v2.4.1
+Loading package BEAST v2.4.1
+
+                        BEAST v2.4.1, 2002-2016
+             Bayesian Evolutionary Analysis Sampling Trees
+                       Designed and developed by
+ Remco Bouckaert, Alexei J. Drummond, Andrew Rambaut & Marc A. Suchard
+                                    
+                     Department of Computer Science
+                         University of Auckland
+                        remco@cs.auckland.ac.nz
+                        alexei@cs.auckland.ac.nz
+                                    
+                   Institute of Evolutionary Biology
+                        University of Edinburgh
+                           a.rambaut@ed.ac.uk
+                                    
+                    David Geffen School of Medicine
+                 University of California, Los Angeles
+                           msuchard@ucla.edu
+                                    
+                      Downloads, Help & Resources:
+                           http://beast2.org/
+                                    
+  Source code distributed under the GNU Lesser General Public License:
+                   http://github.com/CompEvol/beast2
+                                    
+                           BEAST developers:
+   Alex Alekseyenko, Trevor Bedford, Erik Bloomquist, Joseph Heled, 
+ Sebastian Hoehna, Denise Kuehnert, Philippe Lemey, Wai Lok Sibon Li, 
+Gerton Lunter, Sidney Markowitz, Vladimir Minin, Michael Defoin Platel, 
+                 Oliver Pybus, Chieh-Hsi Wu, Walter Xie
+                                    
+                               Thanks to:
+          Roald Forsberg, Beth Shapiro and Korbinian Strimmer
+
+Random number seed: 1467152551906
+
+File: run2beast.xml seed: 1467152551906 threads: 12
+Loading package BEAST v2.4.1
+Loading package BEAST v2.4.1
+Alignment(run2)
+  110 taxa
+  8831 sites
+  2461 patterns
+
+Filter 1-735
+110 taxa
+735 sites
+502 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run20) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 502, 735]
+Filter 736-1470
+110 taxa
+735 sites
+509 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run21) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 509, 735]
+Filter 1471-2205
+110 taxa
+735 sites
+491 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run22) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 491, 735]
+Filter 2206-2940
+110 taxa
+735 sites
+489 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run23) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 489, 735]
+Filter 2941-3675
+110 taxa
+735 sites
+524 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run24) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 524, 735]
+Filter 3676-4410
+110 taxa
+735 sites
+497 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run25) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 497, 735]
+Filter 4411-5145
+110 taxa
+735 sites
+505 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run26) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 505, 735]
+Filter 5146-5880
+110 taxa
+735 sites
+498 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run27) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 498, 735]
+Filter 5881-6615
+110 taxa
+735 sites
+493 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run28) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 493, 735]
+Filter 6616-7350
+110 taxa
+735 sites
+510 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run29) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 510, 735]
+Filter 7351-8085
+110 taxa
+735 sites
+510 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run210) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 510, 735]
+Filter 8086-8831
+110 taxa
+746 sites
+507 patterns
+Failed to load BEAGLE library: /global/software/beagle/beagle212/lib/libhmsbeagle-jni.so: libltdl.so.3: cannot open shared object file: No such file or directory
+TreeLikelihood(treeLikelihood.run211) uses BeerLikelihoodCore4
+  FilteredAlignment(null): [taxa, patterns, sites] = [110, 507, 746]
+===============================================================================
+Citations for this model:
+
+Bouckaert RR, Heled J, Kuehnert D, Vaughan TG, Wu C-H, Xie D, Suchard MA,
+  Rambaut A, Drummond AJ (2014) BEAST 2: A software platform for Bayesian
+  evolutionary analysis. PLoS Computational Biology 10(4): e1003537
+
+===============================================================================
+Start likelihood: -219500.97144786833 
+WARNING: If nothing seems to be happening on screen this is because none of the loggers give feedback to screen.
+WARNING: This happens when a filename  is specified for the 'screenlog' logger.
+WARNING: To get feedback to screen, leave the filename for screenlog blank.
+WARNING: Otherwise, the screenlog is saved into the specified file.
+Warning: Overwriting file /global/scratch/seanla/Data/MTBC/run2/beast/run2.log
+Warning: Overwriting file /global/scratch/seanla/Data/MTBC/run2/beast/run2-screen.log
+Warning: Overwriting file /global/scratch/seanla/Data/MTBC/run2/beast/run2.trees
+Please wait while BEAST takes 150000 pre-burnin samples
+
+Operator                                               Tuning    #accept    #reject      Pr(m)  Pr(acc|m)
+ScaleOperator(YuleBirthRateScaler.t:run2)              0.5656      15537      43671     0.0397     0.2624 
+ScaleOperator(YuleModelTreeScaler.t:run2)              0.8292       6511      53271     0.0397     0.1089 
+ScaleOperator(YuleModelTreeRootScaler.t:run2)          0.8006       5927      53662     0.0397     0.0995 Try setting scaleFactor to about 0.895
+Uniform(YuleModelUniformOperator.t:run2)                    -     126298     469480     0.3968     0.2120 
+SubtreeSlide(YuleModelSubtreeSlide.t:run2)             0.1071       2224     295046     0.1984     0.0075 Try decreasing size to about 0.054
+Exchange(YuleModelNarrow.t:run2)                            -       9750     287578     0.1984     0.0328 
+Exchange(YuleModelWide.t:run2)                              -         17      59505     0.0397     0.0003 
+WilsonBalding(YuleModelWilsonBalding.t:run2)                -         35      59644     0.0397     0.0006 
+DeltaExchangeOperator(FrequenciesExchanger.s:run2)     0.0164        445       1547     0.0013     0.2234 
+ScaleOperator(RateACScaler.s:run2)                     0.7095        226       1742     0.0013     0.1148 
+ScaleOperator(RateAGScaler.s:run2)                     0.7261        208       1704     0.0013     0.1088 
+ScaleOperator(RateATScaler.s:run2)                     0.6482        358       1673     0.0013     0.1763 
+ScaleOperator(RateCGScaler.s:run2)                     0.7605        257       1726     0.0013     0.1296 
+ScaleOperator(RateGTScaler.s:run2)                     0.7488        287       1672     0.0013     0.1465 
+
+     Tuning: The value of the operator's tuning parameter, or '-' if the operator can't be optimized.
+    #accept: The total number of times a proposal by this operator has been accepted.
+    #reject: The total number of times a proposal by this operator has been rejected.
+      Pr(m): The probability this operator is chosen in a step of the MCMC (i.e. the normalized weight).
+  Pr(acc|m): The acceptance probability (#accept as a fraction of the total proposals for this operator).
+
+
+Total calculation time: 3716.922 seconds
+End likelihood: -109216.6352886684
+Epilogue Args:
+Job ID: 327627.breezy-admin
+User ID: seanla
+Group ID: seanla
+Job Name: beast
+Session ID: 32301
+Resource List: epilogue=/home/seanla/Jobs/epilogue.script,mem=64gb,neednodes=1:ppn=12,nodes=1:ppn=12,walltime=72:00:00
+Resources Used: cput=09:21:54,mem=620380kb,vmem=9941024kb,walltime=01:02:01
+Queue Name: mainq
+Account String: 
+

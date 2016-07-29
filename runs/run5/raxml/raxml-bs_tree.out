@@ -1,0 +1,77 @@
+Found a total of 76 taxa in first tree of tree collection /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bootstrap.run5raxml
+Expecting all remaining trees in collection to have the same taxon set
+
+This is the RAxML Master Pthread
+
+This is RAxML Worker Pthread Number: 2
+
+This is RAxML Worker Pthread Number: 3
+
+This is RAxML Worker Pthread Number: 1
+
+This is RAxML Worker Pthread Number: 4
+
+This is RAxML Worker Pthread Number: 5
+
+This is RAxML Worker Pthread Number: 6
+
+This is RAxML Worker Pthread Number: 7
+
+This is RAxML Worker Pthread Number: 8
+
+This is RAxML Worker Pthread Number: 10
+
+This is RAxML Worker Pthread Number: 11
+
+This is RAxML Worker Pthread Number: 9
+
+
+This is RAxML version 7.2.8 released by Alexandros Stamatakis in October 2010.
+
+With greatly appreciated code contributions by:
+Andre Aberer (TUM)
+Simon Berger (TUM)
+John Cazes (TACC)
+Michael Ott (TUM)
+Nick Pattengale (UNM)
+Wayne Pfeiffer (SDSC)
+Akifumi S. Tanabe (Univ. Tsukuba)
+
+
+RAxML Bipartition Computation: Drawing support values from trees in file /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bootstrap.run5raxml onto tree in file /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bestTree.run5raxml
+
+
+RAxML was called as follows:
+
+raxml -T 12 -f b -m GTRGAMMA -z /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bootstrap.run5raxml -t /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bestTree.run5raxml -w /global/scratch/seanla/Data/MTBC/run5/raxml -n bs_tree 
+
+
+
+
+Found 1 tree in File /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bestTree.run5raxml
+
+
+
+Found 100 trees in File /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bootstrap.run5raxml
+
+
+
+Found 1 tree in File /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bestTree.run5raxml
+
+
+
+Time for Computation of Bipartitions 0.475836
+Tree with bipartitions written to file:  /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bipartitions.bs_tree
+Tree with bipartitions as branch labels written to file:  /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_bipartitionsBranchLabels.bs_tree
+Execution information file written to :  /global/scratch/seanla/Data/MTBC/run5/raxml/RAxML_info.bs_tree
+Epilogue Args:
+Job ID: 329605.breezy-admin
+User ID: seanla
+Group ID: seanla
+Job Name: raxml-bs_tree
+Session ID: 2944
+Resource List: epilogue=/home/seanla/Jobs/epilogue.script,mem=32gb,neednodes=1:ppn=12,nodes=1:ppn=12,walltime=24:00:00
+Resources Used: cput=00:00:04,mem=0kb,vmem=0kb,walltime=00:00:01
+Queue Name: mainq
+Account String: 
+

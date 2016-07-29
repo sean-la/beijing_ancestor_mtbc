@@ -1,0 +1,47 @@
+;   MEGA-CC (Molecular Evolutionary Genetics Analysis Compute Core)
+;
+;   Suggested Citation for MEGA-CC:
+;   MEGA-CC: Computing Core of Molecular Evolutionary Genetics
+;   Analysis Program for Automated and Iterative Data Analysis.
+;   Bioinformatics (2012) 28:2685-2686 (Epub 2012 Aug 24)
+
+[General Info]
+
+	Data Type                               = nucleotide (non-coding)
+	No. of Taxa                             =      110
+	No. of Sites                            =     8831
+	Data File                               = '/global/scratch/seanla/Data/MTBC/run2/snps/run2.fasta'
+	Settings File                           = '/global/scratch/seanla/Data/MTBC/run2/../mao/infer_NJ_nucleotide.mao'
+	Command Line                            = /home/seanla/Software/mega/megacc -a /global/scratch/seanla/Data/MTBC/run2/../mao/infer_NJ_nucleotide.mao -d /global/scratch/seanla/Data/MTBC/run2/snps/run2.fasta -o /global/scratch/seanla/Data/MTBC/run2/mega/run2mega
+
+[Analysis Settings]
+
+	Analysis                                = Phylogeny Reconstruction
+	Scope                                   = All Selected Taxa
+	Statistical Method                      = Neighbor-joining
+	Phylogeny Test                          = Not Applicable
+	Test of Phylogeny                       = Bootstrap method
+	No. of Bootstrap Replications           = 1000
+	Substitutions Type                      = Nucleotide
+	Model/Method                            = No. of differences
+	Substitutions to Include                = d: Transitions + Transversions
+	Rates among Sites                       = Uniform Rates
+	Gamma Parameter                         = Not Applicable
+	Pattern among Lineages                  = Same (Homogeneous)
+	Gaps/Missing Data Treatment             = Complete deletion
+	Site Coverage Cutoff (%)                = Not Applicable
+	Has Time Limit                          = False
+	Maximum Execution Time                  = -1
+	datatype                                = snNucleotide
+	containsCodingNuc                       = False
+	MissingBaseSymbol                       = ?
+	IdenticalBaseSymbol                     = .
+	GapSymbol                               = -
+
+[Analysis Statistics]
+
+	Start Time                              = 22-6-16 13:38:04
+	End Time                                = 22-6-16 14:08:46
+	Execution Time                          = 1841.999 (seconds)
+	Peak Memory Used(Working Set)           = Not available
+	Sum of branch lengths                   = 14732.754

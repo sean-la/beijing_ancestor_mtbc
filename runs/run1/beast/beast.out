@@ -1,0 +1,104 @@
+
+                  BEAST v1.8.3, 2002-2016
+       Bayesian Evolutionary Analysis Sampling Trees
+                 Designed and developed by
+   Alexei J. Drummond, Andrew Rambaut and Marc A. Suchard
+                              
+               Department of Computer Science
+                   University of Auckland
+                  alexei@cs.auckland.ac.nz
+                              
+             Institute of Evolutionary Biology
+                  University of Edinburgh
+                     a.rambaut@ed.ac.uk
+                              
+              David Geffen School of Medicine
+           University of California, Los Angeles
+                     msuchard@ucla.edu
+                              
+                Downloads, Help & Resources:
+                 	http://beast.bio.ed.ac.uk
+                              
+Source code distributed under the GNU Lesser General Public License:
+          	http://github.com/beast-dev/beast-mcmc
+                              
+                     BEAST developers:
+	Alex Alekseyenko, Guy Baele, Trevor Bedford, Filip Bielejec, Erik Bloomquist, Matthew Hall,
+	Joseph Heled, Sebastian Hoehna, Denise Kuehnert, Philippe Lemey, Wai Lok Sibon Li,
+	Gerton Lunter, Sidney Markowitz, Vladimir Minin, Michael Defoin Platel,
+          	Oliver Pybus, Chieh-Hsi Wu, Walter Xie
+                              
+                         Thanks to:
+    	Roald Forsberg, Beth Shapiro and Korbinian Strimmer
+
+
+Random number seed: 1466442294956
+
+
+Failed to load parser: dr.inferencexml.trace.GeneralizedHarmonicMeanAnalysisParser
+line = dr.inferencexml.trace.GeneralizedHarmonicMeanAnalysisParser
+
+
+
+Loading additional development parsers from development_parsers.properties, which is additional set of parsers only available for development version ...
+
+WARNING: parser - dr.inferencexml.model.DifferenceParameterParser in development_parsers.properties is duplicated, which is REPLACING the same parser loaded previously.
+
+WARNING: parser - dr.inferencexml.model.SumParameterParser in development_parsers.properties is duplicated, which is REPLACING the same parser loaded previously.
+
+WARNING: parser - dr.evomodelxml.operators.SubtreeJumpOperatorParser in development_parsers.properties is duplicated, which is REPLACING the same parser loaded previously.
+
+
+Failed to load parser: dr.evomodel.treelikelihood.RootDiscreteStateStatistic
+line = dr.evomodel.treelikelihood.RootDiscreteStateStatistic
+
+
+Failed to load parser: dr.evomodel.epidemiology.casetocase.operators.InfectionBranchGibbsOperator
+line = dr.evomodel.epidemiology.casetocase.operators.InfectionBranchGibbsOperator
+
+WARNING: parser - dr.app.beagle.multidimensionalscaling.MultiDimensionalScalingLikelihood in development_parsers.properties is duplicated, which is REPLACING the same parser loaded previously.
+
+Parsing XML file: run1snps.xml
+  File encoding: ASCII
+Looking for plugins in /global/scratch/seanla/Data/MTBC/run1/beast/plugins
+Read alignment: alignment
+  Sequences = 154
+      Sites = 9771
+   Datatype = nucleotide
+Site patterns 'patterns' created from positions 1-9771 of alignment 'alignment'
+  pattern count = 9771
+Creating the tree model, 'treeModel'
+  initial tree topology = ((((((((((((((((ERR550658,ERR552580),ERR551185),((ERR551945,ERR552136),ERR552954)),(ERR550941,ERR551693)),(ERR551520,ERR551636)),(ERR550782,ERR552130)),(((ERR551494,ERR553139),ERR551928),ERR552760)),(((((((ERR551167,ERR551184),ERR550739),ERR550984),(ERR551772,ERR551805)),ERR550957),ERR551944),((ERR551930,ERR552939),ERR552177))),(((ERR552830,ERR553081),ERR551156),ERR552445)),((((((ERR551575,ERR552743),ERR551855),ERR550946),((ERR551362,ERR551369),ERR552331)),((ERR550927,ERR553116),ERR551572)),ERR550670)),((ERR551361,ERR551412),ERR550779)),((((ERR551201,ERR553313),ERR551557),ERR550947),ERR553098)),(((((((((ERR551071,ERR551688),ERR551293),(ERR550910,ERR551370)),((ERR550777,ERR553304),ERR551934)),ERR550738),(ERR551990,ERR553086)),ERR552190),(((ERR551311,ERR551981),ERR550659),((ERR552219,ERR552911),(ERR552671,ERR553237)))),((((ERR551225,ERR553277),ERR551822),((ERR551694,ERR552895),(ERR552940,ERR553251))),ERR551927))),((ERR551979,ERR553082),ERR551360)),(((((((((((ERR551086,ERR552358),ERR551214),(ERR551977,ERR553274)),(ERR552482,ERR552838)),((ERR551558,ERR552907),ERR553156)),(((ERR551007,ERR553107),ERR552194),ERR552550)),(ERR551854,ERR551943)),((((ERR550887,ERR551879),ERR553303),ERR552141),((ERR551212,ERR553171),ERR553275))),((((((((ERR552555,ERR553068),ERR552669),ERR550644),ERR552690),((ERR551956,ERR552755),ERR550778)),(ERR552493,ERR552910)),((((ERR552894,ERR553157),ERR552949),(ERR551090,ERR552549)),((ERR551079,ERR552912),(ERR551155,ERR551806)))),(ERR551983,ERR552444))),(((ERR552494,ERR553324),ERR552689),(ERR551556,ERR552429))),(((((((((ERR550783,ERR551978),ERR552670),ERR551982),ERR551821),(ERR550643,ERR619080)),ERR552479),ERR551804),(((ERR551159,ERR551980),(ERR551554,ERR553291)),ERR550724)),((((ERR551305,ERR552668),(ERR551681,ERR552787)),ERR551638),((ERR551168,ERR551549),ERR550940))))),((ERR551680,ERR551957),ERR552090))
+  tree height = 0.13846351223395648
+Using strict molecular clock model.
+Creating state frequencies model 'frequencies': Initial frequencies = {0.25, 0.25, 0.25, 0.25}
+Creating site model.
+  4 category discrete gamma with initial shape = 0.5
+dr.xml.XMLParseException: Error parsing '<ancestralTreeLikelihood>' element with id, 'treeLikelihood':
+Ancestral state functionality is only support when using the BEAGLE library.
+Available from http://github.com/beagle-dev/beagle-lib/
+	at dr.xml.AbstractXMLObjectParser.parseXMLObject(Unknown Source)
+	at dr.xml.XMLParser.convert(Unknown Source)
+	at dr.xml.XMLParser.convert(Unknown Source)
+	at dr.xml.XMLParser.parse(Unknown Source)
+	at dr.app.beast.BeastMain.<init>(Unknown Source)
+	at dr.app.beast.BeastMain.main(Unknown Source)
+Jun 20, 2016 11:04:56 AM dr.app.beast.BeastMain <init>
+SEVERE: Parsing error - poorly formed BEAST file, run1snps.xml:
+Error parsing '<ancestralTreeLikelihood>' element with id, 'treeLikelihood':
+Ancestral state functionality is only support when using the BEAGLE library.
+Available from http://github.com/beagle-dev/beagle-lib/
+java.lang.RuntimeException: Terminate
+	at dr.app.beast.BeastMain.<init>(Unknown Source)
+	at dr.app.beast.BeastMain.main(Unknown Source)
+Epilogue Args:
+Job ID: 326172.breezy-admin
+User ID: seanla
+Group ID: seanla
+Job Name: beast
+Session ID: 27979
+Resource List: epilogue=/home/seanla/Jobs/epilogue.script,mem=32gb,neednodes=1:ppn=12,nodes=1:ppn=12,walltime=72:00:00
+Resources Used: cput=00:00:02,mem=0kb,vmem=0kb,walltime=00:00:02
+Queue Name: mainq
+Account String: 
+
