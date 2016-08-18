@@ -181,18 +181,18 @@ bayesTree = dendropy.Tree.get(
 
 cladesExists(mlTree, bayesTree)
 '''
-tns = dendropy.TaxonNamespace(tns)
+tns = dendropy.TaxonNamespace()
 
-run7path = "/home/seanla/Projects/beijing_ancestor_mtbc/runs/run7/bayes/run7bayes.newick"
+run7path = "/home/seanla/Projects/beijing_ancestor_mtbc/runs/run7/bayes/run7-bayes_consensus.newick"
 run7RawTree = readNewick(run7path)
-run7Tree = dendropy.Tree.get(
+run7tree = dendropy.Tree.get(
 		data=run7RawTree,
 		schema='newick',
 		taxon_namespace=tns)
 
 run8path = "/home/seanla/Projects/beijing_ancestor_mtbc/runs/run8/bayes/run8bayes.newick"
 run8RawTree = readNewick(run8path)
-run8Tree = dendropy.Tree.get(
+run8tree = dendropy.Tree.get(
 		data=run8RawTree,
 		schema='newick',
 		taxon_namespace=tns)
@@ -202,7 +202,7 @@ distance = treecompare.symmetric_difference(run7tree, run8tree)
 treeList = dendropy.TreeList()
 treeList.read(data=run7RawTree, schema="newick")
 numTaxa = len( treeList.taxon_namespace )
-MaxDistance = (2*numTaxa)-6
+maxDistance = (2*numTaxa)-6
 
 normalizedDistance = distance/maxDistance
 print "Distance = %f" % (normalizedDistance)
